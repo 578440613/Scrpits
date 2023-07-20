@@ -52,13 +52,11 @@ var timestamp = Math.round(new Date().getTime() / 1000).toString();
 async function GetRewrite() {
     
     if ($request.url.indexOf("activeDetails") > -1) {
+        //ck1-Authorization  ck2-uid
         const ck1 = $request.headers['Authorization'];
-        log("ck1:"+ck1)
-        const pattern = /\/([^/]+)$/; // 匹配最后一个斜杠后的非斜杠字符
+        const pattern = /\/([^/]+)$/;
         const ck2 = $request.url.match(pattern)[1];
-        log("ck2:"+ck2)
         ck=ck1+"&"+ck2
-        log(ck)
         if (ydxq) {
             if (ydxq.indexOf(ck) == -1) {
                 ydxq = ydxq + "\n" + ck;

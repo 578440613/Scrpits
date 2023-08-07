@@ -52,18 +52,19 @@ var timestamp = Math.round(new Date().getTime() / 1000).toString();
 async function GetRewrite() {
     
     if ($request.url.indexOf("promotion.waimai.meituan.com/lottery/limitcouponcomponent/fetchcoupon") > -1) {
+        console.log($request.url)
 
     
-        mt_Cookie= $request.headers.Cookie;
+        let mt_Cookie= $request.headers.Cookie;
         console.log(mt_Cookie)
-        mt_djtoken=$request.headers.dj-token
-        mtgsig = $request.headers.mtgsig;
+        let mt_djtoken=$request.headers.dj-token
+        let mtgsig = $request.headers.mtgsig;
         
-        pkc_mt_body = $request.body;
-        mt_body = JSON.parse($request.body);
-        mtFingerprint = mt_body.mtFingerprint;
+       let pkc_mt_body = $request.body;
+        let mt_body = JSON.parse($request.body);
+        let mtFingerprint = mt_body.mtFingerprint;
         
-        mt=`('{备注}','${mt_Cookie}','${mt_djtoken}','${mtgsig}','${mtFingerprint}')`
+        let mt=`('{备注}','${mt_Cookie}','${mt_djtoken}','${mtgsig}','${mtFingerprint}')`
         console.log(mt)
         if (mt) {
             if (mt.indexOf(ck) == -1) {

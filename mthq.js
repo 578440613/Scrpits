@@ -2,7 +2,7 @@
 【MITM】
 hostname = promotion.waimai.meituan.com
 【重写】
-promotion.waimai.meituan.com/lottery/limitcouponcomponent/fetchcoupon url script-request-body mthq.js
+https://promotion.waimai.meituan.com/lottery/limitcouponcomponent/fetchcoupon url script-request-body mthq.js
 */
 
 const $ = new Env('美团获取');
@@ -13,7 +13,7 @@ const debug = 0; //0为关闭调试，1为打开调试,默认为0
 //////////////////////
 
 let mt = ($.isNode() ? process.env.mt : $.getdata("mt")) || "";
-let mrArr = [];
+let mtArr = [];
 let msg = '';
 let accountTips = '';
 var count=0;
@@ -55,14 +55,18 @@ async function GetRewrite() {
         
     
         let mt_Cookie= $request.headers.Cookie;
-        let mt_djtoken=$request.headers['dj-token']
+        console.log(mt_Cookie)
+        let mt_djtoken=$request.headers.dj-token
         let mtgsig = $request.headers.mtgsig;
         
         let mt_body = JSON.parse($request.body);
         let mtFingerprint = mt_body.mtFingerprint;
         console.log(mtFingerprint)
-        let ck1=`('{备注}','${mt_Cookie}','${mt_djtoken}','${mtgsig}','${mtFingerprint}')`
-        const ck=ck1
+        let mt=`('{备注}','${mt_Cookie}','${mt_djtoken}','${mtgsig}','${mtFingerprint}')`
+        const ck=mt
+        
+       
+        console.log(ck)
         if (mt) {
             if (mt.indexOf(ck) == -1) {
                 mt = mt + "\n" + ck;

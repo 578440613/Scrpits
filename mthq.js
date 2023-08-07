@@ -55,17 +55,18 @@ async function GetRewrite() {
         console.log($request.url)
 
     
-        let mt_Cookie= $request.headers.Cookie;
-        console.log(mt_Cookie)
-        let mt_djtoken=$request.headers.dj-token
-        let mtgsig = $request.headers.mtgsig;
+       // let mt_Cookie= $request.headers.Cookie;
+       // console.log(mt_Cookie)
+        //let mt_djtoken=$request.headers.dj-token
+        //let mtgsig = $request.headers.mtgsig;
         
        let pkc_mt_body = $request.body;
         let mt_body = JSON.parse($request.body);
         let mtFingerprint = mt_body.mtFingerprint;
+        console.log(mtFingerprint)
         
-        mt=`('{备注}','${mt_Cookie}','${mt_djtoken}','${mtgsig}','${mtFingerprint}')`
-        console.log(mt)
+       // mt=`('{备注}','${mt_Cookie}','${mt_djtoken}','${mtgsig}','${mtFingerprint}')`
+        //console.log(mt)
         if (mt) {
             if (mt.indexOf(ck) == -1) {
                 mt = mt + "\n" + ck;

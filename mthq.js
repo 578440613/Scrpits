@@ -55,18 +55,14 @@ async function GetRewrite() {
         
     
         let mt_Cookie= $request.headers.Cookie;
-        console.log(mt_Cookie)
         let mt_djtoken=$request.headers['dj-token']
         let mtgsig = $request.headers.mtgsig;
         
         let mt_body = JSON.parse($request.body);
         let mtFingerprint = mt_body.mtFingerprint;
         console.log(mtFingerprint)
-        let mt=`('{备注}','${mt_Cookie}','${mt_djtoken}','${mtgsig}','${mtFingerprint}')`
-        const ck=mt
-        
-       
-        console.log(ck)
+        let ck1=`('{备注}','${mt_Cookie}','${mt_djtoken}','${mtgsig}','${mtFingerprint}')`
+        const ck=ck1
         if (mt) {
             if (mt.indexOf(ck) == -1) {
                 mt = mt + "\n" + ck;

@@ -51,7 +51,7 @@ var timestamp = Math.round(new Date().getTime() / 1000).toString();
 // ============================================重写============================================ \\
 async function GetRewrite() {
     
-    if ($request.url.indexOf("promotion.waimai.meituan.com/lottery/limitcouponcomponent/fetchcoupon") > -1) {
+    if ($request.url.indexOf("fetchcoupon") > -1) {
         console.log($request.url)
 
     

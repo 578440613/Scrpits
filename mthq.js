@@ -56,7 +56,7 @@ async function GetRewrite() {
     
         let mt_Cookie= $request.headers.Cookie;
         console.log(mt_Cookie)
-        let mt_djtoken=$request.headers.dj-token
+        let mt_djtoken=$request.headers['dj-token']
         let mtgsig = $request.headers.mtgsig;
         
         let mt_body = JSON.parse($request.body);

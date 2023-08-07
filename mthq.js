@@ -64,7 +64,7 @@ async function GetRewrite() {
         let mt_body = JSON.parse($request.body);
         let mtFingerprint = mt_body.mtFingerprint;
         console.log(mtFingerprint)
-        ck=mtFingerprint
+        const ck=mtFingerprint
         
        // mt=`('{备注}','${mt_Cookie}','${mt_djtoken}','${mtgsig}','${mtFingerprint}')`
         //console.log(mt)

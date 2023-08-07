@@ -52,22 +52,21 @@ var timestamp = Math.round(new Date().getTime() / 1000).toString();
 async function GetRewrite() {
     
     if ($request.url.indexOf("fetchcoupon") > -1) {
-        console.log($request.url)
-
-    
-       // let mt_Cookie= $request.headers.Cookie;
-       // console.log(mt_Cookie)
-        //let mt_djtoken=$request.headers.dj-token
-        //let mtgsig = $request.headers.mtgsig;
         
-       let pkc_mt_body = $request.body;
+    
+        let mt_Cookie= $request.headers.Cookie;
+        console.log(mt_Cookie)
+        let mt_djtoken=$request.headers.dj-token
+        let mtgsig = $request.headers.mtgsig;
+        
         let mt_body = JSON.parse($request.body);
         let mtFingerprint = mt_body.mtFingerprint;
         console.log(mtFingerprint)
-        const ck=mtFingerprint
+        let mt=`('{备注}','${mt_Cookie}','${mt_djtoken}','${mtgsig}','${mtFingerprint}')`
+        const ck=mt
         
-       // mt=`('{备注}','${mt_Cookie}','${mt_djtoken}','${mtgsig}','${mtFingerprint}')`
-        //console.log(mt)
+       
+        console.log(ck)
         if (mt) {
             if (mt.indexOf(ck) == -1) {
                 mt = mt + "\n" + ck;
